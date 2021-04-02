@@ -25,7 +25,7 @@ SECRET_KEY = 'jge$_5sl*q*j@3kvv7r&5416%2w-m#lq%s*&x2aavx1+fl8t)='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -133,7 +133,12 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'mysite/static')
 ]
